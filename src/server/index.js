@@ -1,11 +1,11 @@
-export default (compilerOptions) => (req, res, next) => {
-  console.log(req)
-  res.send(`
-  <html>
-  <body>
-    <div id="app"></div>
-    <script src="/client.js"></script>
-  </body>
-  </html>
-  `)
-}
+// THIS IS HOT RELOADED
+
+import express from 'express';
+import handleRender from './handleRender'
+
+const app = express()
+
+app.get('/', handleRender)
+
+// The exported member of this file is used as a middleware in the /dev/index.js file
+export default (compilerOptions) => app

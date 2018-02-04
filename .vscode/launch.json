@@ -7,14 +7,14 @@
     {
       "type": "chrome",
       "request": "attach",
-      "name": "Attach to Chrome",
+      "name": "Debug Chrome Client",
       "port": 9222,
       "webRoot": "${workspaceRoot}"
     },
     {
 			"type": "node",
 			"request": "launch",
-			"name": "Start dev server",
+			"name": "Debug Server",
 			"program": "${workspaceRoot}/dev/index.js",
 			"protocol": "inspector",
       "sourceMaps": true,
