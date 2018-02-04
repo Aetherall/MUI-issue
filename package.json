@@ -28,7 +28,7 @@
     "babel-plugin-transform-react-jsx": "^6.24.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dev/index.js"
   },
   "author": "",
   "license": "ISC"
