@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 
 import Home from './home';
 import Dashboard from './dashboard';
-
+import Multiple from './multiple';
 
 
 class App extends React.Component {
@@ -18,12 +18,16 @@ class App extends React.Component {
         <br/>     
         <br/>   
         <NavLink to="/dashboard">Access MUI Dashboard Page</NavLink>
+        <br/>     
+        <br/>   
+        <NavLink to="/multiple">Access MUI Multiple tree page</NavLink>
         <br/>
         <br/>
         <hr/>
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/dashboard" component={Dashboard}/>
+          <Route path="/multiple" component={Multiple}/>
           <Route path="/" component={ (props) => <h1> 404 </h1> }/>
         </Switch>
       </div>

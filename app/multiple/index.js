@@ -5,27 +5,8 @@ import Button from 'material-ui/Button';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { withStyles } from 'material-ui/styles';
 
-import AppBar from './AppBar';
-import Issue from './Issue';
-
 
 const theme = createMuiTheme()
-
-const styles = {
-  root: {
-    backgroundColor: 'red'
-  }
-};
-
-const RedButton = withStyles(styles)(Button);
-
-
-const removeSSRstyles = () => {
-  const jssStyles = document.getElementById('jss-server-side');
-  if (jssStyles && jssStyles.parentNode) {
-    jssStyles.parentNode.removeChild(jssStyles);
-  }
-}
 
 class PrintMuiContext extends React.Component{
   static contextTypes = {
@@ -41,16 +22,11 @@ class PrintMuiContext extends React.Component{
 
 
 const App = () => (
-  <MuiThemeProvider theme={theme} sheetsManager={new Map()} >
+  <MuiThemeProvider theme={theme} sheetsManager={new Map()} disableStylesGeneration={true} >
     <div style={{backgroundColor: "rgba(255,0,0,0.2)"}}>
       <hr/>
         MuiThemeProvider root - start
       <hr/>
-      <AppBar/>
-      <Button raised >Button</Button>
-      <RedButton raised >RED Button withStyles</RedButton>
-      <Button raised onClick={removeSSRstyles} >remove SSR styles</Button>
-      <Issue/>
       <PrintMuiContext name={'root'}/>
       <hr/>
       <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
