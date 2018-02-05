@@ -5,7 +5,7 @@ import handleRender from './handleRender'
 
 const app = express()
 
-app.get('/', handleRender)
+app.use(handleRender)
 
 // The exported member of this file is used as a middleware in the /dev/index.js file
 export default (compilerOptions) => app

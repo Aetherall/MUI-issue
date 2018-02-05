@@ -17,7 +17,7 @@ const client = {
 	name: 'client',
 	target: 'web',
 	devtool: 'eval-source-map',
-	entry: ['babel-polyfill', clientEntry],
+	entry: ['babel-polyfill', "react-hot-loader/patch", 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false', clientEntry],
 	output: {
 		path: path.join(__dirname, './dist'),
 		filename: 'client.js',
@@ -32,13 +32,18 @@ const client = {
 			},
 		],
 	},
+	plugins: [
+		new webpack.NamedModulesPlugin(),
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoEmitOnErrorsPlugin()
+	],
 };
 
 const server = {
 	name: 'server',
 	target: 'node',
 	devtool: 'eval-source-map',
-	entry: [serverEntry],
+	entry: ['babel-polyfill', serverEntry],
 	output: {
 		path: path.join(__dirname, './dist'),
 		filename: 'server.js',

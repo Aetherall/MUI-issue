@@ -1,41 +1,35 @@
 import React from 'react';
-import Button from 'material-ui/Button';
 
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { Switch, Route } from 'react-router'
+import { NavLink } from 'react-router-dom'
 
-import { withStyles } from 'material-ui/styles';
-import AppBar from './AppBar';
-import Issue from './Issue';
+import Home from './home';
+import Dashboard from './dashboard';
 
 
-const theme = createMuiTheme()
 
-const styles = {
-  root: {
-    backgroundColor: 'red'
+class App extends React.Component {
+
+  render(){
+    return (
+      <div>
+        <h1>MUI ISSUE</h1>
+        <NavLink to="/">Access Home Page</NavLink>
+        <br/>     
+        <br/>   
+        <NavLink to="/dashboard">Access MUI Dashboard Page</NavLink>
+        <br/>
+        <br/>
+        <hr/>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route path="/dashboard" component={Dashboard}/>
+          <Route path="/" component={ (props) => <h1> 404 </h1> }/>
+        </Switch>
+      </div>
+    )
   }
-};
 
-const RedButton = withStyles(styles)(Button);
-
-
-const removeSSRstyles = () => {
-  const jssStyles = document.getElementById('jss-server-side');
-  if (jssStyles && jssStyles.parentNode) {
-    jssStyles.parentNode.removeChild(jssStyles);
-  }
 }
-
-const App = () => (
-  <MuiThemeProvider theme={theme}>
-    <div>
-      <AppBar/>
-      <Button raised >Button</Button>
-      <RedButton raised >RedButton</RedButton>
-      <Button raised onClick={removeSSRstyles} >remove SSR styles</Button>
-      <Issue/>
-    </div>
-  </MuiThemeProvider>
-);
 
 export default App;

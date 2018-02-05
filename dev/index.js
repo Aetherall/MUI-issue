@@ -31,6 +31,6 @@ app.use(webpackHotMiddleware(compilers.compilers.find(compiler => compiler.name 
 
 app.use(webpackHotServerMiddleware(compilers));
 
-app.listen(3000, function() {
-	console.log('==> Server Started');
+app.listen(3050, function() {
+	console.log('==> Server Started on port : 3050');
 });

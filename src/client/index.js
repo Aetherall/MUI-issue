@@ -1,23 +1,29 @@
 import React from 'react';
 import { render } from 'react-dom';
+
+import { BrowserRouter } from 'react-router-dom'
+
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 
 import App from '../../app';
 
-/*class Main extends React.Component {
-  // Remove the server-side injected CSS.
-  componentDidMount() {
-    const jssStyles = document.getElementById('jss-server-side');
-    if (jssStyles && jssStyles.parentNode) {
-      jssStyles.parentNode.removeChild(jssStyles);
-    }
-  }
+const renderRoot = (Root) => {
 
-  render() {
-    return <App {...this.props} />
-  }
+  const toRender = (
+    <BrowserRouter>
+      <Root />
+    </BrowserRouter>
+  )
+
+  render(toRender, document.querySelector('#root'));
 }
-*/
-// Create a theme instance.
 
-render(<App />, document.querySelector('#root'));
+renderRoot(App)
+
+// Webpack Hot Module Replacement API
+if (module.hot) {
+  module.hot.accept('../../app', () => { 
+    const app = require('../../app').default;
+    renderRoot(app)
+  })
+}

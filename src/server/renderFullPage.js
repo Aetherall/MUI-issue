@@ -4,6 +4,9 @@ export default (html, css) =>
   <html>
     <head>
       <title>Material-UI</title>
+      <style>html{
+        font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif
+      }</style>
     </head>
     <body>
       <div id="root">${html}</div>
